@@ -85,7 +85,7 @@ async function saveClasses (req, res){
    
     try {    
         const db = await Database
-        await createProffy (db, {proffyValue, classValue, classScheduleValues})
+        await createProffy (db, { proffyValue, classValue, classScheduleValues})
 
         let queryString = "?subject=" + req.body.subject
         queryString += "&weekday=" + req.body.weekday[0]

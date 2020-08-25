@@ -137,6 +137,23 @@
         grid-template-columns: 2fr 1fr 1fr;
         column-gap: 1.6rem;
     }
+
+    #remove {
+        display: flex;
+        margin: auto;
+        margin-top: 4rem;
+        border-radius: 0.8rem;
+        padding: 5px;
+
+        background-color: red;
+        color: var(--color-button-text);
+        font: 700 1.6rem Archivo;
+
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+    }
+
     #page_give_classes #schedule_items .input_block+.input_block,
     #page_give_classes #schedule_items .select_block+.input_block {
         margin-top: 0;
