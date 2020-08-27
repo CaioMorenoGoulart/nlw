@@ -105,7 +105,7 @@
     justify-content: center;
     text-decoration: none;
 
-    transition: 0.2rem;
+    transition: 0.2s;
     margin-top: 3.2rem; 
 }
 
@@ -137,7 +137,7 @@
         grid-template-columns: 2fr 1fr 1fr;
         column-gap: 1.6rem;
     }
-
+    
     #remove {
         display: flex;
         margin: auto;
@@ -148,10 +148,15 @@
         background-color: red;
         color: var(--color-button-text);
         font: 700 1.6rem Archivo;
+        transition: .2s;
 
         cursor: pointer;
         align-items: center;
         justify-content: center;
+
+    }
+    #remove:hover{
+        background: #e21f00;
     }
 
     #page_give_classes #schedule_items .input_block+.input_block,

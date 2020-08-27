@@ -1,0 +1,1 @@
+setTimeout(function(){ window.location.href = '/study' }, 2000)
