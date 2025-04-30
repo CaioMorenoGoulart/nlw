@@ -1,8 +1,15 @@
-const Database = require('sqlite-async')
+const sqlite3 = require('sqlite3')
+const { open } = require('sqlite')
 
-function execute(db) {
-    
-    return db.exec(`
+async function openDb() {
+    return open({
+        filename: __dirname + '/database.sqlite',
+        driver: sqlite3.Database
+    })
+}
+
+module.exports = openDb().then(async (db) => {
+    await db.exec(`
         CREATE TABLE IF NOT EXISTS proffys (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT,
@@ -17,7 +24,7 @@ function execute(db) {
             cost TEXT,
             proffy_id INTEGER
         );
-        
+
         CREATE TABLE IF NOT EXISTS class_schedule (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             class_id INTEGER,
@@ -26,6 +33,6 @@ function execute(db) {
             time_to INTEGER
         );
     `)
-}
 
-module.exports = Database.open(__dirname + '/database.sqlite').then(execute)
+    return db
+})

@@ -1,29 +1,30 @@
-
+// Configuração do servidor
 const express = require('express')
 const server = express()
 
+// Importação das rotas
 const { pageLanding, pageStudy, pageGiveClasses, succespage, saveClasses } = require('./pages')
 
-
-//Configurar nunjucks
+// Configuração do template engine
 const nunjucks = require('nunjucks')
-const { query } = require('express')
 nunjucks.configure('src/views', {
     express: server,
-    noCache: true, 
+    noCache: true,
 })
 
+// Middlewares
 server
+    .use(express.urlencoded({ extended: true })) // Para receber os dados via POST
+    .use(express.static('public')) // Arquivos estáticos
 
-.use(express.urlencoded({ extended: true}))
-//configurar Arquivos estáticos (css, scripts, imagens)
-.use(express.static('public'))
-//Rotas da aplicação
-.get("/", pageLanding)
-.get("/study", pageStudy)
-.get("/give_classes", pageGiveClasses)
-.get("/succes", succespage)
-.post("/save_classes", saveClasses)
+// Rotas
+    .get("/", pageLanding)
+    .get("/study", pageStudy)
+    .get("/give_classes", pageGiveClasses)
+    .get("/succes", succespage)
+    .post("/save_classes", saveClasses)
 
-
-.listen(5500)
+// Iniciar o servidor
+    .listen(5500, () => {
+        console.log('Servidor rodando em http://localhost:5500')
+    })

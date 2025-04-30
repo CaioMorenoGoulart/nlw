@@ -59,7 +59,7 @@ function succespage(req, res) {
 }
 
 async function saveClasses (req, res){
-    const createProffy = require('./database/createProffy')
+    const createProffy = require('./database/createproffy');
 
     const proffyValue = {
         name: req.body.name,
